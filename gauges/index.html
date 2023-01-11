@@ -21,11 +21,25 @@ table, th, td {
           },
           false
     );
-    var table = document.getElementById("displaytab");
 
-    let row = table.insertRow();
-    let name = row.insertCell(-1);
-    name.innerHTML = processed_products;
+    const items1 = [
+        {processed:processed_products,missed:projected_missed_products,energy_mes:energy}
+    ]
+    
+    function loadTableData(items) {
+    const table = document.getElementById("displaytab");
+    items.forEach( item => {
+      let row = table.insertRow();
+      let prods = row.insertCell(0);
+      prods.innerHTML = item.processed;
+      let missed = row.insertCell(1);
+      missed.innerHTML = item.missed;
+      let energy_info = row.insertCell(2)
+      energy_info.innerHTML = item.energy_mes
+    });
+  }
+
+  loadTableData(items1);
     
 
 
