@@ -8,6 +8,7 @@ table, th, td {
 <body>
 
     <h2>Simulation State</h2>
+    <h2>id="output"</h2>
     
     <table id="displaytab" style="width:100%">
       <tr>
@@ -21,6 +22,7 @@ table, th, td {
         <td>$energy</td>
       </tr>
     </table>
+</body>
 <script language="JavaScript">
     window.addEventListener(
           "message",
@@ -37,6 +39,12 @@ table, th, td {
           },
           false
     );
+
+    window.onload = function(){
+    var processed_products = data.state["processed_products"];
+
+    document.getElementById('output').innerHTML = processed_products;
+};
 
     const items1 = [
         {processed:processed_products,missed:projected_missed_products,energy_mes:energy}
@@ -58,5 +66,4 @@ table, th, td {
   loadTableData(items1);
 
 </script>
-</body>
 </html>
