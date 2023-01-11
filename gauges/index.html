@@ -21,12 +21,19 @@ table, th, td {
           },
           false
     );
-</script>
+    var table = document.getElementById("displaytab");
+
+    let row = table.insertRow();
+    let name = row.insertCell(-1);
+    name.innerHTML = processed_products;
+    
+
+
 <body>
 
 <h2>Simulation State</h2>
 
-<table style="width:100%">
+<table id="displaytab" style="width:100%">
   <tr>
     <td>Processed Products</td>
     <td>Projected Missed Products</td>
@@ -40,4 +47,5 @@ table, th, td {
 </table>
 
 </body>
+</script>
 </html>
