@@ -5,24 +5,6 @@ table, th, td {
   border:1px solid black;
 }
 </style>
-<body>
-
-    <h2>Simulation State</h2>
-    <p id="output"></p>
-    
-    <table id="displaytab" style="width:100%">
-      <tr>
-        <td>Processed Products</td>
-        <td>Projected Missed Products</td>
-        <td>Energy</td>
-      </tr>
-      <tr>
-        <td>$processed_products</td>
-        <td>$projected_missed_products</td>
-        <td>$energy</td>
-      </tr>
-    </table>
-</body>
 <script language="JavaScript">
     window.addEventListener(
           "message",
@@ -66,4 +48,22 @@ table, th, td {
   loadTableData(items1);
 
 </script>
+<body>
+
+    <h2>Simulation State</h2>
+    <p id="output"></p>
+    
+    <table id="displaytab" style="width:100%">
+      <tr>
+        <td>Processed Products</td>
+        <td>Projected Missed Products</td>
+        <td>Energy</td>
+      </tr>
+      <tr>
+        <td>$processed_products</td>
+        <td>$projected_missed_products</td>
+        <td>$energy</td>
+      </tr>
+    </table>
+</body>
 </html>
