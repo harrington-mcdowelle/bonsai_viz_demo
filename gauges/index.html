@@ -1,14 +1,12 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script language="JavaScript">
-      const params = new URLSearchParams(window.location.search);
-      const darkMode = params.get("_theme") === "dark";
-
-      function init() {
-        const processed_products = document.getElementById("processed_products");
-        const projected_missed_products = document.getElementById("projected_missed_products");
-
-        window.addEventListener(
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<script language="JavaScript">
+    window.addEventListener(
           "message",
           (event) => {
             // convert message to formatted JSON text for display
@@ -16,15 +14,30 @@
             const str = JSON.stringify(data, null, 4);
             const out = document.getElementById("out");
             out.textContent = str;
-
-            // read state out of message and convert units
+            // read state out of message
             const processed_products = data.state["processed_products"];
             const projected_missed_products = data.state["projected_missed_products"];
+            const energy = data.state["o1_energy"];
           },
           false
-        );
-      }
-      init();
-    </script>
-  </body>
+    );
+</script>
+<body>
+
+<h2>Simulation State</h2>
+
+<table style="width:100%">
+  <tr>
+    <td>Processed Products</td>
+    <td>Projected Missed Products</td>
+    <td>Energy</td>
+  </tr>
+  <tr>
+    <td>processed_products</td>
+    <td>projected_missed_products</td>
+    <td>energy</td>
+  </tr>
+</table>
+
+</body>
 </html>
