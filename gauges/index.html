@@ -39,6 +39,8 @@
         const Processed_products=0;
         const Throughput_rate=0;
         const Projected_missed_products=0;
+        const O1_Products=0;
+        const O2_Products=0;
 
 
         // utility setAttributes
@@ -226,6 +228,8 @@
                 const Processed_products=parseFloat(data.action["processed_products"].toFixed(1));
                 const Throughput_rate=parseFloat(data.action["throughput_rate"].toFixed(1));
                 const Projected_missed_products=parseFloat(data.action["projected_missed_products"].toFixed(1));
+                const O1_Products=parseFloat(data.action["o1_conveyor_count"].toFixed(1));
+                const O2_Products=parseFloat(data.action["o2_conveyor_count"].toFixed(1));
 
                 //Update gauge values
                 o1energygauge.setValue(O1_Energy, 1);
@@ -249,6 +253,22 @@
                 const ccLabel = document.getElementById("conveyor_choice_label");
                 ccLabel.style.color = "rgb(153, 153, 153)";
                 ccLabel.innerHTML = "Conveyor choice: " + Conveyor_choice.toFixed(1);
+
+                const ppLabel = document.getElementById("processed_products_label");
+                ppLabel.style.color = "rgb(153, 153, 153)";
+                ppLabel.innerHTML = "Processed Products: " + Processed_products.toFixed(1);
+
+                const pmpLabel = document.getElementById("processed_products_label");
+                pmpLabel.style.color = "rgb(153, 153, 153)";
+                pmpLabel.innerHTML = "Projected Missed: " + Projected_missed_products.toFixed(1);
+
+                const o1pLabel = document.getElementById("o1_products_label");
+                o1pLabel.style.color = "rgb(153, 153, 153)";
+                o1pLabel.innerHTML = "O1 Conveyor Count: " + O1_Products.toFixed(1);
+
+                const o2pLabel = document.getElementById("o2_products_label");
+                o2pLabel.style.color = "rgb(153, 153, 153)";
+                o2pLabel.innerHTML = "O2 Conveyor Count: " + O2_Products.toFixed(1);
 
             } catch (e) {
                 // ignore
@@ -289,6 +309,8 @@
         <div id="products_remaining_gauge" class="gauge-container two" style="font-size: x-small ">
             <span id="products_remaining_label" style="font-size: x-large">Products_Remaining</span>
         </div>
+        <div id="o1_products_label" class="ref-label">O1_Products</div>
+        <div id="o2_products_label" class="ref-label">O2_Products</div>
     </div>
     <div class="flex-container">
         <div id="time_remaining_label" class="ref-label">Time_remaining</div>
