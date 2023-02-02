@@ -28,20 +28,18 @@
         let o2energygauge = undefined;
         let timeremaininggauge = undefined;
         let productsremaining = undefined;
-
+        
+        // Energy on 01 conveyor
         const O1_Energy = 0;
-
-        // Cref: desired concentration
         const O2_Energy = 0;
-
-        //Tref: desired temperature
         const Time_remaining = 0;
-
-        // Tc : cooling jacket medium temperature
         const Conveyor_choice = 0;
-
         const Products_remaining=0;
         const Order_products=0;
+        const Processed_products=0;
+        const Throughput_rate=0;
+        const Projected_missed_products=0;
+
 
         // utility setAttributes
         function setAttributes(el, attributes) {
@@ -225,6 +223,9 @@
 
                 const Products_remaining=parseFloat(data.action["projected_missed_products"].toFixed(1));
                 const Order_products=parseFloat(data.action["order_1_products"].toFixed(1));
+                const Processed_products=parseFloat(data.action["processed_products"].toFixed(1));
+                const Throughput_rate=parseFloat(data.action["throughput_rate"].toFixed(1));
+                const Projected_missed_products=parseFloat(data.action["projected_missed_products"].toFixed(1));
 
                 //Update gauge values
                 o1energygauge.setValue(O1_Energy, 1);
@@ -283,13 +284,16 @@
             <span id="o2_energy_label" style="font-size: x-large">O2_Energy</span>
         </div>
         <div id="time_remaining_gauge" class="gauge-container two" style="font-size: x-small ">
-            <span id="time_remaining_label" style="font-size: x-large">Time_Remaining</span>
+            <span id="time_remaining_gauge_label" style="font-size: x-large">Time_Remaining_Gauge</span>
         </div>
         <div id="products_remaining_gauge" class="gauge-container two" style="font-size: x-small ">
-            <span id="time_remaining_label" style="font-size: x-large">Products_Remaining</span>
+            <span id="products_remaining_label" style="font-size: x-large">Products_Remaining</span>
         </div>
+    </div>
     <div class="flex-container">
         <div id="time_remaining_label" class="ref-label">Time_remaining</div>
+        <div id="projected_missed_products_label" class="ref-label">Projected_missed_products</div>
+        <div id="processed_products_label" class="ref-label">Processed_products</div>
         <div id="conveyor_choice_label" class="ref-label blue" style="font-weight: bold; background-color: var(--blue)">
             Conveyor_choice</div>
     </div>
