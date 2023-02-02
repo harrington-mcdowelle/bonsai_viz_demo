@@ -26,7 +26,7 @@
         // set on load()
         let o1energygauge = undefined;
         let o2energygauge = undefined;
-        let timeremaininggauge = undefined;
+        let throughputrategauge = undefined;
         let productsremaining = undefined;
         
         // Energy on 01 conveyor
@@ -106,10 +106,10 @@
                     }
                 );
 
-                timeremaininggauge = Gauge(
-                    document.getElementById("time_remaining_gauge"),
+                throughputrategauge = Gauge(
+                    document.getElementById("throughput_rate_gauge"),
                     {
-                        min: 10,
+                        min: 0,
                         max: 800,
                         dialStartAngle: 180,
                         dialEndAngle: 0,
@@ -117,15 +117,15 @@
                         value: 0,
                         viewBox: "0 0 100 57",
                         label: function (value) {
-                            return value.toFixed(1) + " MW";
+                            return value.toFixed(1) + " products/hour";
                         },
                         color: function (value) {
-                            if (value < 80) {
-                                return "#5ee432"; //Green
-                            } else if (value < 149) {
+                            if (value < 20) {
+                                return "#ef4655"; //Green
+                            } else if (value < 100) {
                                 return "#fffa50"; //Yellow
-                            } else if (value >= 150) {
-                                return "#ef4655"; //Red
+                            } else if (value >= 200) {
+                                return "#5ee432"; //Red
                             } else {
                                 return "#f7aa38"; //Orange
                             }
@@ -136,7 +136,7 @@
                 productsremaininggauge = Gauge(
                     document.getElementById("products_remaining_gauge"),
                     {
-                        min: 10,
+                        min: 0,
                         max: 800,
                         dialStartAngle: 180,
                         dialEndAngle: 0,
@@ -258,7 +258,7 @@
                 ppLabel.style.color = "rgb(153, 153, 153)";
                 ppLabel.innerHTML = "Processed Products: " + Processed_products.toFixed(1);
 
-                const pmpLabel = document.getElementById("processed_products_label");
+                const pmpLabel = document.getElementById("projected_missed_products_label");
                 pmpLabel.style.color = "rgb(153, 153, 153)";
                 pmpLabel.innerHTML = "Projected Missed: " + Projected_missed_products.toFixed(1);
 
@@ -303,8 +303,8 @@
         <div id="o2_energy_gauge" class="gauge-container two" style="font-size: x-small ">
             <span id="o2_energy_label" style="font-size: x-large">O2_Energy</span>
         </div>
-        <div id="time_remaining_gauge" class="gauge-container two" style="font-size: x-small ">
-            <span id="time_remaining_gauge_label" style="font-size: x-large">Time_Remaining_Gauge</span>
+        <div id="throughput_rate_gauge" class="gauge-container two" style="font-size: x-small ">
+            <span id="throughput_rate_label" style="font-size: x-large">Throughput_rate</span>
         </div>
         <div id="products_remaining_gauge" class="gauge-container two" style="font-size: x-small ">
             <span id="products_remaining_label" style="font-size: x-large">Products_Remaining</span>
